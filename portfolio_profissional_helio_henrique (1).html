@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hélio Henrique | Portfólio Profissional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #081120;
+      --bg-soft: #0f172a;
+      --card: rgba(15, 23, 42, 0.78);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e5eefb;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-2: #22d3ee;
+      --accent: #818cf8;
+      --success: #34d399;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(129, 140, 248, 0.12), transparent 26%),
+        linear-gradient(180deg, #020617 0%, #081120 40%, #0b1220 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { opacity: .9; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(2, 6, 23, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: white;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 76px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card, .panel, .timeline-item, .project, .contact-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(56, 189, 248, .25);
+      background: rgba(56, 189, 248, .08);
+      color: #bfeaff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.03;
+      margin: 0 0 14px;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .highlight {
+      color: white;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .18s ease, opacity .18s ease, border-color .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #062033;
+    }
+    .btn-secondary {
+      color: white;
+      border-color: var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .mini-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 24px;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-side {
+      padding: 28px;
+    }
+
+    .profile-box {
+      padding: 26px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(56,189,248,.08), rgba(129,140,248,.06));
+      border: 1px solid rgba(148,163,184,.15);
+    }
+
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #03131f;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .profile-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .profile-list div {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(148,163,184,.12);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 26px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(56,189,248,.08);
+      color: #c9f2ff;
+      border: 1px solid rgba(56,189,248,.15);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+    }
+
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .timeline-top h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .company {
+      color: #c7d2fe;
+      font-weight: 600;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    ul.clean {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    ul.clean li { margin-bottom: 8px; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      padding: 24px;
+    }
+
+    .project .badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: #d1fae5;
+      background: rgba(52, 211, 153, .08);
+      border: 1px solid rgba(52, 211, 153, .16);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-weight: 700;
+    }
+
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 22px;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, .14);
+      background: rgba(255,255,255,.03);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: white;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card, .hero-side, .panel, .timeline-item, .project, .contact-card {
+        padding: 20px;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Hélio Henrique</div>
+      <div class="menu">
+        <a href="#sobre">Sobre</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#competencias">Competências</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="eyebrow">ERP TOTVS RM • Sistemas • Processos • SQL</div>
+        <h1>Analista de Sistemas com foco em <span class="highlight">implantação, sustentação e evolução de ERP</span>.</h1>
+        <p class="subtitle">
+          Profissional com experiência em TOTVS RM, backoffice, educacional, análise de requisitos, relatórios em SQL Server e melhoria de processos. Atuação orientada a eficiência operacional, estabilidade sistêmica e valor para o negócio.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/henriquemds/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-secondary" href="mailto:henrique.hmgomes@outlook.com">Entrar em contato</a>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <strong>ERP</strong>
+            <span>Implantação, suporte e melhoria contínua</span>
+          </div>
+          <div class="mini-stat">
+            <strong>SQL</strong>
+            <span>Relatórios, dados e apoio à decisão</span>
+          </div>
+          <div class="mini-stat">
+            <strong>BPM</strong>
+            <span>Mapeamento e otimização de processos</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card hero-side">
+        <div class="profile-box">
+          <div class="profile-avatar">HH</div>
+          <h3 style="margin:0 0 8px; font-size:24px;">Hélio Henrique Mendes Gomes</h3>
+          <p style="margin:0; color:var(--muted);">Especialista em ambientes ERP com experiência nos segmentos educacional e saúde.</p>
+          <div class="profile-list">
+            <div><strong style="color:white; display:block; margin-bottom:4px;">Foco principal</strong>TOTVS RM, sustentação, parametrização e relatórios</div>
+            <div><strong style="color:white; display:block; margin-bottom:4px;">Áreas de atuação</strong>Backoffice, educacional, requisitos, treinamentos</div>
+            <div><strong style="color:white; display:block; margin-bottom:4px;">Ferramentas</strong>SQL Server, Jira, Zendesk, Scrum, Kanban</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Sobre mim</h2>
+            <p>Perfil híbrido entre negócio e tecnologia, com experiência em implantação de sistemas, suporte funcional e evolução de processos corporativos.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3 style="margin-top:0;">Resumo profissional</h3>
+            <p style="color:var(--muted); margin-bottom:0;">
+              Atuo com análise de sistemas e ERP TOTVS RM, participando de projetos que envolvem atualização de versões, parametrização, sustentação, criação de relatórios, cubos e integração entre áreas. Minha atuação combina visão operacional, entendimento de processos e capacidade analítica para entregar soluções mais estáveis, eficientes e aderentes ao negócio.
+            </p>
+          </div>
+          <div class="panel" id="competencias">
+            <h3 style="margin-top:0;">Competências-chave</h3>
+            <div class="tags">
+              <span class="tag">TOTVS RM</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">Implantação de Sistemas</span>
+              <span class="tag">Backoffice</span>
+              <span class="tag">Educacional</span>
+              <span class="tag">BPM</span>
+              <span class="tag">Análise de Requisitos</span>
+              <span class="tag">Fórmula Visual</span>
+              <span class="tag">Relatórios</span>
+              <span class="tag">Cubos</span>
+              <span class="tag">Scrum</span>
+              <span class="tag">Kanban</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Experiência profissional</h2>
+            <p>Trajetória construída em sustentação, implantação e melhoria de sistemas, com atuação em instituições de ensino, saúde e tecnologia.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Analista de Sistemas</h3>
+                <div class="company">Centro Universitário Univértix</div>
+              </div>
+              <div class="date">11/2025 – Atual</div>
+            </div>
+            <ul class="clean">
+              <li>Planejamento e mapeamento de processos de backoffice e educacional no ERP TOTVS RM.</li>
+              <li>Parametrização de módulos, aplicação de melhorias, releases e novas funcionalidades.</li>
+              <li>Desenvolvimento de relatórios em SQL Server, cubos e apoio à análise de dados.</li>
+              <li>Suporte técnico, manutenção de portais e capacitação de usuários.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Analista de Sistemas</h3>
+                <div class="company">Universidade Federal de Minas Gerais – UFMG</div>
+              </div>
+              <div class="date">11/2024 – 05/2025</div>
+            </div>
+            <ul class="clean">
+              <li>Atuação na sustentação e evolução do ERP TOTVS RM em rotinas de backoffice.</li>
+              <li>Atualizações de versão, migrações, parametrizações e melhorias sistêmicas.</li>
+              <li>Criação e otimização de relatórios, cubos e treinamentos para equipes.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Consultor de Implantação Pleno</h3>
+                <div class="company">MV Informática Nordeste</div>
+              </div>
+              <div class="date">11/2023 – 06/2024</div>
+            </div>
+            <ul class="clean">
+              <li>Implantação de soluções hospitalares e apoio à transformação de processos assistenciais.</li>
+              <li>Levantamento de requisitos, documentação funcional e desenho de fluxos.</li>
+              <li>Treinamentos gerenciais e suporte a usuários em ambiente de saúde.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Analista Funcional Sênior</h3>
+                <div class="company">Digisystem | Cliente SENAC-SP</div>
+              </div>
+              <div class="date">01/2023 – 10/2023</div>
+            </div>
+            <ul class="clean">
+              <li>Atuação com Oracle Campus Solutions em demandas educacionais e financeiras.</li>
+              <li>Gestão de projetos, testes funcionais, melhoria de processos e alinhamento com stakeholders.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Consultor de TI</h3>
+                <div class="company">Faminas-BH</div>
+              </div>
+              <div class="date">05/2022 – 01/2023</div>
+            </div>
+            <ul class="clean">
+              <li>Implantação e sustentação do TOTVS RM em módulos educacionais e administrativos.</li>
+              <li>Levantamento de requisitos, relatórios, banco de dados e apoio a projetos de inovação.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <h3>Analista de Suporte RM</h3>
+                <div class="company">TOTVS</div>
+              </div>
+              <div class="date">12/2020 – 05/2022</div>
+            </div>
+            <ul class="clean">
+              <li>Suporte sênior ao RM Educacional, acompanhamento de tickets e SLAs.</li>
+              <li>Criação de relatórios, dashboards, fórmulas visuais e soluções em banco de dados.</li>
+              <li>Identificação de melhorias e apoio à resolução de demandas sistêmicas complexas.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Projetos e entregas em destaque</h2>
+            <p>Exemplos de frentes que representam bem meu perfil técnico-funcional e minha capacidade de gerar impacto em ambientes corporativos.</p>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project">
+            <span class="badge">ERP</span>
+            <h3>Implantação e parametrização de módulos</h3>
+            <p>Estruturação de rotinas em ambientes TOTVS RM, com ajustes de regras, versões, funcionalidades e aderência aos processos internos.</p>
+          </article>
+
+          <article class="project">
+            <span class="badge">SQL & Dados</span>
+            <h3>Relatórios gerenciais e análises</h3>
+            <p>Criação e otimização de relatórios em SQL Server, cubos e recursos analíticos para apoiar acompanhamento operacional e tomada de decisão.</p>
+          </article>
+
+          <article class="project">
+            <span class="badge">Processos</span>
+            <h3>Mapeamento e melhoria contínua</h3>
+            <p>Levantamento de requisitos, documentação funcional e redesenho de fluxos para aumentar eficiência e estabilidade dos processos organizacionais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid-2">
+          <div class="panel">
+            <h3 style="margin-top:0;">Formação</h3>
+            <p style="margin-bottom:8px;"><strong>Pós-graduação em Engenharia de Software</strong><br><span style="color:var(--muted);">Faculdade Digital Descomplica • 2025 – 2027</span></p>
+            <p style="margin:0;"><strong>Bacharel em Administração</strong><br><span style="color:var(--muted);">Faculdade Pitágoras • 2015 – 2018</span></p>
+          </div>
+
+          <div class="panel">
+            <h3 style="margin-top:0;">Certificações e idioma</h3>
+            <p style="margin-bottom:8px; color:var(--muted);">Teste de Software – USP • 2024</p>
+            <p style="margin-bottom:8px; color:var(--muted);">Métodos Ágeis – Faculdade Descomplica • 2022</p>
+            <p style="margin-bottom:8px; color:var(--muted);">HDI Desktop Advanced Support Technician • 2020</p>
+            <p style="margin:0; color:var(--muted);">Inglês • Intermediário</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contato</h2>
+            <p>Disponível para oportunidades em análise de sistemas, consultoria ERP, implantação, sustentação e melhoria de processos.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="margin-top:0;">Vamos conversar</h3>
+            <p style="color:var(--muted); margin-bottom:0;">Este portfólio foi pensado para apresentar minha trajetória e meu posicionamento profissional de forma objetiva, moderna e estratégica.</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Email</strong>
+                <a href="mailto:henrique.hmgomes@outlook.com">henrique.hmgomes@outlook.com</a>
+              </div>
+              <div class="contact-item">
+                <strong>LinkedIn</strong>
+                <a href="https://www.linkedin.com/in/henriquemds/" target="_blank" rel="noopener noreferrer">linkedin.com/in/henriquemds</a>
+              </div>
+              <div class="contact-item">
+                <strong>Localização</strong>
+                <span style="color:var(--muted);">Matipó – MG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 • Portfólio profissional de Hélio Henrique Mendes Gomes
+  </footer>
+</body>
+</html>
